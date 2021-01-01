@@ -56,14 +56,14 @@ export const Gamestop: Store = {
 			model: 'xbox series x',
 			series: 'xboxsx',
 			url:
-				'https://www.gamestop.com/video-games/xbox-series-x/consoles/products/xbox-series-x/11108371.html?condition=New'
+				'https://www.gamestop.com/video-games/xbox-series-x/consoles/products/xbox-series-x/B224744V.html?condition=New'
 		},
 		{
 			brand: 'microsoft',
 			model: 'xbox series s',
 			series: 'xboxss',
 			url:
-				'https://www.gamestop.com/video-games/xbox-series-x/consoles/products/xbox-series-s-digital-edition/11108372.html?condition=New'
+				'https://www.gamestop.com/video-games/xbox-series-x/consoles/products/xbox-series-s-digital-edition/B224746N.html?condition=New'
 		}
 	],
 	name: 'gamestop',

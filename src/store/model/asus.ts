@@ -1,5 +1,5 @@
-import {Store} from './store';
 import fetch from 'node-fetch';
+import {Store} from './store';
 
 export const Asus: Store = {
   backoffStatusCodes: [403, 429, 503],
@@ -66,10 +66,10 @@ export const Asus: Store = {
     },
     {
       brand: 'asus',
-      itemNumber: '202010AM310000001',
-      model: 'strix',
+      itemNumber: '202010AM310000003',
+      model: 'dual',
       series: '3070',
-      url: 'https://store.asus.com/us/item/202010AM310000001',
+      url: 'https://store.asus.com/us/item/202010AM310000003',
     },
     {
       brand: 'asus',
@@ -94,17 +94,17 @@ export const Asus: Store = {
     },
     {
       brand: 'asus',
-      itemNumber: '202012AM160000002',
+      itemNumber: '202009AM290000002',
       model: 'strix',
       series: '3080',
-      url: 'https://store.asus.com/us/item/202012AM160000002',
+      url: 'https://store.asus.com/us/item/202009AM290000002',
     },
     {
       brand: 'asus',
-      itemNumber: '202011AM190000001',
+      itemNumber: '202009AM160000001',
       model: 'tuf oc',
       series: '3080',
-      url: 'https://store.asus.com/us/item/202011AM190000001',
+      url: 'https://store.asus.com/us/item/202009AM160000001',
     },
     {
       brand: 'asus',
@@ -129,10 +129,10 @@ export const Asus: Store = {
     },
     {
       brand: 'asus',
-      itemNumber: '202011AM190000002',
+      itemNumber: '202009AM150000001',
       model: 'tuf oc',
       series: '3090',
-      url: 'https://store.asus.com/us/item/202011AM190000002',
+      url: 'https://store.asus.com/us/item/202009AM150000001',
     },
     {
       brand: 'asus',
@@ -140,13 +140,6 @@ export const Asus: Store = {
       model: 'tuf',
       series: '3090',
       url: 'https://store.asus.com/us/item/202009AM150000003',
-    },
-    {
-      brand: 'asus',
-      itemNumber: '202010AM310000004',
-      model: 'strix oc',
-      series: '3090',
-      url: 'https://store.asus.com/us/item/202010AM310000004',
     },
     {
       brand: 'asus',
@@ -164,6 +157,7 @@ export const Asus: Store = {
     },
   ],
   name: 'asus',
+  country: 'US',
   realTimeInventoryLookup: async (itemNumber: string) => {
     const request_url = 'https://store.asus.com/us/category/get_real_time_data';
     const response = await fetch(request_url, {
@@ -188,3 +182,15 @@ export const Asus: Store = {
   },
   successStatusCodes: [[0, 399], 404],
 };
+
+/* Copy Paste Template
+
+Asus depreciated item numbers, do not use. Instead just copy and paste the links like normal.
+
+{
+  brand: '',
+  model: '',
+  series: '',
+  url: '',
+},
+*/

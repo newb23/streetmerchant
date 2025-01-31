@@ -1,7 +1,7 @@
-import {Link, Store} from './store/model';
 import chalk from 'chalk';
-import {config} from './config';
 import winston from 'winston';
+import {config} from './config';
+import {Link, Store} from './store/model';
 
 const prettyJson = winston.format.printf(info => {
   const timestamp = new Date().toLocaleTimeString();
@@ -10,7 +10,7 @@ const prettyJson = winston.format.printf(info => {
     '::'
   )} ${info.message}`;
 
-  if (Object.keys(info.metadata).length > 0) {
+  if (Object.keys(info.metadata as object).length > 0) {
     out = `${out} ${chalk.magenta(JSON.stringify(info.metadata, null, 2))}`;
   }
 
@@ -143,7 +143,9 @@ export const Print = {
         '✖ ' +
         buildProductString(link, store, true) +
         ' :: ' +
-        chalk.yellow(`PRICE ${link.price ?? ''} EXCEEDS LIMIT ${maxPrice}`)
+        chalk.yellow(
+          `IN STOCK, PRICE ${link.price ?? ''} EXCEEDS LIMIT ${maxPrice}`
+        )
       );
     }
 
@@ -241,11 +243,25 @@ function buildSetupString(
 
 function buildProductString(link: Link, store: Store, color?: boolean): string {
   if (color) {
-    return (
-      chalk.cyan(`[${store.name}]`) +
-      chalk.grey(` [${link.brand} (${link.series})] ${link.model}`)
-    );
+    if (store.currentProxyIndex !== undefined && store.proxyList) {
+      const proxy = `${store.currentProxyIndex + 1}/${store.proxyList.length}`;
+      return (
+        chalk.gray(`[${proxy}]`) +
+        chalk.cyan(` [${store.name}]`) +
+        chalk.grey(` [${link.brand} (${link.series})] ${link.model}`)
+      );
+    } else {
+      return (
+        chalk.cyan(`[${store.name}]`) +
+        chalk.grey(` [${link.brand} (${link.series})] ${link.model}`)
+      );
+    }
   }
 
-  return `[${store.name}] [${link.brand} (${link.series})] ${link.model}`;
+  if (store.currentProxyIndex !== undefined && store.proxyList) {
+    const proxy = `${store.currentProxyIndex + 1}/${store.proxyList.length}`;
+    return `[${proxy}] [${store.name}] [${link.brand} (${link.series})] ${link.model}`;
+  } else {
+    return `[${store.name}] [${link.brand} (${link.series})] ${link.model}`;
+  }
 }

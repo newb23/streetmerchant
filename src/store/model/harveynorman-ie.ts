@@ -21,10 +21,10 @@ export const HarveyNormanIE: Store = {
       brand: 'microsoft',
       model: 'xbox series x',
       series: 'xboxsx',
-      url:
-        'https://www.harveynorman.ie/gaming/xbox-series/microsoft-xbox-series-x-console-1tb.html',
+      url: 'https://www.harveynorman.ie/gaming/xbox-series/microsoft-xbox-series-x-console-1tb.html',
     },
   ],
   name: 'harveynorman-ie',
+  country: 'IE',
   waitUntil: 'domcontentloaded',
 };
